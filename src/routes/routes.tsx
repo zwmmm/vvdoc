@@ -2,8 +2,8 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Container from '../Layout/Container'
 
-const pages = import.meta.globEager('../docs/**/*.mdx')
-
+const pages = import.meta.globEager('../../../docs/**/*.mdx')
+console.log(pages)
 const _routes = Object.entries(pages).map(([path, { default: Element }]) => {
   const _path = path
     .replace('../docs/', '')
@@ -11,7 +11,7 @@ const _routes = Object.entries(pages).map(([path, { default: Element }]) => {
     .replaceAll('index', '')
     .split('/')
   return {
-    element: <Element />,
+    element: <Element/>,
     parentPath: _path[0] || '/',
     path: _path[1]
   }
@@ -41,7 +41,7 @@ const routes = Object.entries(parentPathCounts).map(([parentPath, count]) => {
     ) as any
     return {
       path: parentPath,
-      element: <Container path={parentPath} />,
+      element: <Container path={parentPath}/>,
       children: routes
     }
   }

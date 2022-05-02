@@ -1,7 +1,7 @@
 import Prism from './Prism'
 import { Language } from 'prism-react-renderer'
 
-const files = import.meta.glob('../../playground/*', { as: 'raw' })
+const files = import.meta.glob('../../playground/**/*.md', { as: 'raw' })
 
 export default function (props: { url: string }) {
   const { url } = props

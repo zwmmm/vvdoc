@@ -1,7 +1,6 @@
 import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
 import config from '../config'
 import { Moon, Sun } from '../components/Icons'
-import { useEffect } from 'react'
 import Space from './Space'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,10 +15,6 @@ function SwitchTheme(props: BoxProps) {
     const theme = colorMode === 'dark' ? 'light' : 'dark'
     setColorMode(theme)
   }
-  useEffect(() => {
-    const antdTheme = document.getElementById('antd-theme') as HTMLLinkElement
-    antdTheme.href = `/antd.${colorMode}.css`
-  }, [colorMode])
   return (
     <Box
       sx={{
@@ -28,7 +23,7 @@ function SwitchTheme(props: BoxProps) {
       }}
       onClick={toggleTheme}
     >
-      {colorMode === 'dark' ? <Sun /> : <Moon />}
+      {colorMode === 'dark' ? <Sun/> : <Moon/>}
     </Box>
   )
 }
@@ -79,7 +74,7 @@ export default function () {
         }}
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
-          <Image src={config.logo} alt="" />
+          <Image src={config.logo} alt=""/>
           <Box>{config.title}</Box>
         </Space>
         <Space>
@@ -95,7 +90,7 @@ export default function () {
               {item.name}
             </Box>
           ))}
-          <SwitchTheme />
+          <SwitchTheme/>
         </Space>
       </Container>
     </Box>
