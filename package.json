@@ -1,6 +1,5 @@
 {
   "name": "vvdoc",
-  "private": true,
   "version": "0.0.1",
   "bin": {
     "vvdoc": "./bin/vvdoc.js"
@@ -23,9 +22,7 @@
     "react-dom": "^17.0.0",
     "react-router-dom": "^6.3.0",
     "rimraf": "^3.0.2",
-    "theme-ui": "^0.14.4"
-  },
-  "devDependencies": {
+    "theme-ui": "^0.14.4",
     "@mdx-js/mdx": "^2.1.1",
     "@mdx-js/react": "^2.1.1",
     "@mdx-js/rollup": "^2.1.1",
