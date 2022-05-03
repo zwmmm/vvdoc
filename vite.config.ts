@@ -66,7 +66,7 @@ export default defineConfig(async () => {
       fs: {
         allow: [
           __dirname,
-          resolve(root),
+          relative(__dirname, root),
         ]
       }
     },
