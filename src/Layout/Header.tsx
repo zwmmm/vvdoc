@@ -1,10 +1,9 @@
 import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
-import config from '../config'
 import { Moon, Sun } from '../components/Icons'
 import Space from './Space'
 import { useNavigate } from 'react-router-dom'
 
-const menus = Object.entries(config.menus).map(([path, name]) => ({
+const menus = Object.entries(__CONFIG__.menus).map(([path, name]) => ({
   name,
   path
 }))
@@ -25,22 +24,6 @@ function SwitchTheme(props: BoxProps) {
     >
       {colorMode === 'dark' ? <Sun/> : <Moon/>}
     </Box>
-  )
-}
-
-function CodeRepository(props: BoxProps) {
-  const repository = config.repository
-  return (
-    <a
-      className={props.className}
-      sx={props.sx}
-      href={`https://github.com/${repository}`}
-    >
-      <img
-        src={`https://img.shields.io/github/stars/${repository}?style=social`}
-        alt="Github Repo"
-      />
-    </a>
   )
 }
 
@@ -74,8 +57,8 @@ export default function () {
         }}
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
-          <Image src={config.logo} alt=""/>
-          <Box>{config.title}</Box>
+          <Image src={__CONFIG__.logo} alt=""/>
+          <Box>{__CONFIG__.title}</Box>
         </Space>
         <Space>
           {menus.map((item) => (

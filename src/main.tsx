@@ -6,11 +6,21 @@ import { ThemeProvider } from 'theme-ui'
 import theme from './theme/index'
 import components from './theme/components'
 
-ReactDOM.render(
-  <ThemeProvider theme={theme} components={components}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>,
-  document.getElementById('root')
-)
+const mains = Object.values(import.meta.globEager('@root/main.tsx'))
+
+function defaultMain(props: any) {
+  return props.children
+}
+
+function render(_Main: any) {
+  const Main = _Main || defaultMain
+  ReactDOM.render(
+    <ThemeProvider theme={theme} components={components}>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </ThemeProvider>,
+    document.getElementById('root')
+  )
+}
+render(mains[0]?.default)

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box } from 'theme-ui'
-import { ChapterType, RouteType } from '../type'
+import { RouteType } from '../type'
 import React from 'react'
 
 const SubMenu: React.FC<{

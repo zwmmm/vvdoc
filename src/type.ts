@@ -18,11 +18,3 @@ export interface ChapterType {
 export type ForwardRef<T, P> = React.ForwardRefExoticComponent<
   React.PropsWithoutRef<P> & React.RefAttributes<T>
 >
-
-export interface ConfigType {
-  title: string
-  logo: string
-  repository: string
-  menus: Record<string, string>
-  chapters: Record<string, ChapterType[]>
-}

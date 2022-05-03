@@ -2,11 +2,10 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Container from '../Layout/Container'
 
-const pages = import.meta.globEager('../../../docs/**/*.mdx')
-console.log(pages)
+const pages = import.meta.globEager('@root/docs/**/*.mdx')
 const _routes = Object.entries(pages).map(([path, { default: Element }]) => {
   const _path = path
-    .replace('../docs/', '')
+    .replace(`../../${__ROOT__}/docs/`, '')
     .replace('.mdx', '')
     .replaceAll('index', '')
     .split('/')
