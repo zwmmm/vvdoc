@@ -1,6 +1,6 @@
 {
   "name": "vvdoc",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "bin": {
     "vvdoc": "./bin/vvdoc.js"
   },
