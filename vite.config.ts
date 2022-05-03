@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, searchForWorkspaceRoot } from 'vite'
 import { createHtmlPlugin } from "vite-plugin-html";
 import react from '@vitejs/plugin-react'
 import { relative, resolve } from "path";
@@ -48,7 +48,10 @@ export default defineConfig(async () => {
       })
     ],
     optimizeDeps: {
-      include: ['react/jsx-runtime']
+      include: [
+        'react/jsx-runtime',
+        'hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js'
+      ]
     },
     css: {
       preprocessorOptions: {
@@ -66,7 +69,7 @@ export default defineConfig(async () => {
       fs: {
         allow: [
           __dirname,
-          relative(__dirname, root),
+          searchForWorkspaceRoot(process.cwd()),
         ]
       }
     },
