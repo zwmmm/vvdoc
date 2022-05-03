@@ -50,7 +50,6 @@ export default defineConfig(async () => {
     optimizeDeps: {
       include: [
         'react/jsx-runtime',
-        'hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js'
       ]
     },
     css: {
