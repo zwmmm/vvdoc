@@ -25,7 +25,7 @@ const Space: ForwardRef<HTMLElement, SpaceProps> = React.forwardRef(
           return React.cloneElement(item, {
             key: i,
             sx: {
-              [props.direction === 'row' ? 'ml' : 'mt']: i <= 0 ? 0 : 2
+              [props.direction === 'row' ? 'ml' : 'mt']: i <= 0 ? 0 : 3
             }
           })
         })}

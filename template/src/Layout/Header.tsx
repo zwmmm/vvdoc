@@ -64,7 +64,6 @@ export default function () {
         <Space>
           {menus.map((item) => (
             <Box
-              px={1}
               sx={{
                 cursor: 'pointer'
               }}
