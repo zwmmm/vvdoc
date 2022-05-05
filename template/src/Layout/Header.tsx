@@ -2,6 +2,7 @@ import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
 import { Moon, Sun } from '../components/Icons'
 import Space from './Space'
 import { useNavigate } from 'react-router-dom'
+import GithubIcon from "../components/Icons/Github";
 
 const menus = Object.entries(__CONFIG__.menus).map(([path, name]) => ({
   name,
@@ -73,6 +74,19 @@ export default function () {
               {item.name}
             </Box>
           ))}
+          <Box>
+            {__CONFIG__.repository && (
+              <a
+                sx={{
+                  color: 'text'
+                }}
+                target="_blank"
+                href={__CONFIG__.repository}
+              >
+                <GithubIcon/>
+              </a>
+            )}
+          </Box>
           <SwitchTheme/>
         </Space>
       </Container>
