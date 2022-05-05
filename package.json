@@ -4,9 +4,6 @@
   "bin": {
     "vvdoc": "./bin/vvdoc.js"
   },
-  "scripts": {
-    "postinstall": "node ./init.js"
-  },
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@mdx-js/mdx": "^2.1.1",
