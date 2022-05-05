@@ -8,8 +8,9 @@ const root = path.resolve(process.cwd(), '.vvDoc')
 
 ;(async () => {
   if (mode === 'init') {
-    rimraf(root, () => {})
-    fse.copySync(path.resolve(__dirname, 'template'), root, { overwrite: true })
+    rimraf(root, () => {
+      fse.copySync(path.resolve(__dirname, 'template'), root, { overwrite: true })
+    })
   } else if (mode === 'dev') {
     const server = await createServer({
       root,
