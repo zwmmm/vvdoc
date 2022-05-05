@@ -19,9 +19,6 @@ if (fs.existsSync(resolve(root, configName))) {
   Object.assign(config, JSON.parse(fs.readFileSync(resolve(root, configName), 'utf-8')))
 }
 
-const customMainPath = resolve(root, 'main.tsx')
-const isCustomMain = fs.existsSync(customMainPath)
-
 export default defineConfig(async () => {
   const mdx = await import('@mdx-js/rollup')
   return {
@@ -74,8 +71,10 @@ export default defineConfig(async () => {
     },
     define: {
       __ROOT__: JSON.stringify(relative(__dirname, root)),
-      __CONFIG__: JSON.stringify(config),
-      __CUSTOM_MAIN__: JSON.stringify(isCustomMain)
+      __CONFIG__: JSON.stringify(config)
+    },
+    build: {
+      outDir: resolve(root, 'dist')
     }
   }
 })

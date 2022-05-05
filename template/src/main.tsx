@@ -6,7 +6,7 @@ import { ThemeProvider } from 'theme-ui'
 import theme from './theme/index'
 import components from './theme/components'
 
-const mains = Object.values(import.meta.globEager('@root/main.tsx'))
+const mains = Object.values(import.meta.globEager('@root/index.tsx'))
 
 function defaultMain(props: any) {
   return props.children
@@ -17,7 +17,9 @@ function render(_Main: any) {
   ReactDOM.render(
     <ThemeProvider theme={theme} components={components}>
       <BrowserRouter>
-        <App/>
+        <Main>
+          <App/>
+        </Main>
       </BrowserRouter>
     </ThemeProvider>,
     document.getElementById('root')
