@@ -1,5 +1,4 @@
 import { defineConfig, searchForWorkspaceRoot } from 'vite'
-import { createHtmlPlugin } from "vite-plugin-html";
 import react from '@vitejs/plugin-react'
 import { relative, resolve } from "path";
 import * as fs from 'fs';
@@ -32,16 +31,6 @@ export default defineConfig(async () => {
         jsxImportSource: 'theme-ui',
         jsxRuntime: 'automatic',
         providerImportSource: '@mdx-js/react'
-      }),
-      createHtmlPlugin({
-        entry: 'src/main.tsx',
-        inject: {
-          data: {
-            title: config.title,
-            logo: config.logo
-          },
-          tags: config.htmlTags || []
-        }
       })
     ],
     optimizeDeps: {
