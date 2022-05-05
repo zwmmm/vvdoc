@@ -12,13 +12,15 @@ const root = path.resolve(process.cwd(), '.vvDoc')
     fse.copySync(path.resolve(__dirname, 'template'), root, { overwrite: true })
   } else if (mode === 'dev') {
     const server = await createServer({
-      root
+      root,
+      publicDir: path.resolve(process.cwd(), 'public')
     })
     await server.listen()
     server.printUrls()
   } else {
     await build({
-      root
+      root,
+      publicDir: path.resolve(process.cwd(), 'public')
     })
   }
 })()
