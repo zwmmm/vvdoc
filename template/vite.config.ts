@@ -65,7 +65,8 @@ export default defineConfig(async () => {
       __CONFIG__: JSON.stringify(config)
     },
     build: {
-      outDir: resolve(root, 'dist')
+      outDir: resolve(root, 'dist'),
+      emptyOutDir: true
     }
   }
 })
