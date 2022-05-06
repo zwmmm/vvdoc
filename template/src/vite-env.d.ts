@@ -13,7 +13,7 @@ declare const __CONFIG__: {
   repository: string
   menus: Record<string, string>
   chapters: Record<string, ChapterType[]>,
-  htmlTags: any[]
+  base: string
 }
 
 declare const __CUSTOM_MAIN__: string

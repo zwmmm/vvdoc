@@ -11,7 +11,8 @@ const config = {
   repository: "zwmmm/vvDoc",
   menus: {},
   chapters: {},
-  htmlTags: []
+  htmlTags: [],
+  base: '/'
 }
 
 if (fs.existsSync(resolve(root, configName))) {
@@ -21,6 +22,7 @@ if (fs.existsSync(resolve(root, configName))) {
 export default defineConfig(async () => {
   const mdx = await import('@mdx-js/rollup')
   return {
+    base: config.base || '/',
     plugins: [
       react({
         jsxImportSource: 'theme-ui',
