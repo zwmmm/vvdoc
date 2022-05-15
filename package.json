@@ -32,5 +32,11 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "files": [
+    "dist",
+    "src",
+    "index.d.ts",
+    "bin"
+  ]
 }

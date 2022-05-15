@@ -16,15 +16,15 @@ export default function () {
   return (
     <Main>
       <Header />
-      <Container
-        sx={{
-          paddingTop: 80,
-          paddingBottom: 4
-        }}
-      >
-        <Routes />
-        <BackTop />
-      </Container>
+      {/*<Container*/}
+      {/*  sx={{*/}
+      {/*    paddingTop: 80,*/}
+      {/*    paddingBottom: 4*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <Routes />*/}
+      {/*  <BackTop />*/}
+      {/*</Container>*/}
     </Main>
   )
 }
