@@ -1,7 +1,6 @@
-import { createServer, build } from 'vite'
-import  * as path from 'path'
+const { createServer, build } = require('vite')
+const path = require('path')
 const mode = process.argv[2] || 'dev';
-import createPlugins from './plugin.js'
 
 const root = process.cwd()
 
@@ -10,19 +9,15 @@ const root = process.cwd()
     const server = await createServer({
       root,
       publicDir: path.resolve(process.cwd(), 'public'),
-      plugins: createPlugins()
+      configFile: path.resolve(__dirname, '../vite.config.ts')
     })
     await server.listen()
     server.printUrls()
   } else {
     await build({
       root,
-      build: {
-        outDir: path.resolve(root, 'dist'),
-        emptyOutDir: true
-      },
       publicDir: path.resolve(process.cwd(), 'public'),
-      plugins: createPlugins()
+      configFile: path.resolve(__dirname, '../vite.config.ts')
     })
   }
 })()

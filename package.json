@@ -1,12 +1,8 @@
 {
   "name": "vvdoc",
   "version": "2.0.0",
-  "type": "module",
   "bin": {
     "vvdoc": "./bin/vvdoc.js"
-  },
-  "scripts": {
-    "build": "tsc -p node"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
