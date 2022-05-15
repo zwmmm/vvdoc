@@ -2,7 +2,7 @@
   "name": "vvdoc",
   "version": "2.0.1",
   "bin": {
-    "vvdoc": "./bin/vvdoc.js"
+    "vvdoc": "./bin/vvDoc.js"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",

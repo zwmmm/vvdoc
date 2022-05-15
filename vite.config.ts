@@ -4,7 +4,7 @@ import { join, resolve } from "path";
 import * as fs from 'fs';
 
 const root = process.cwd()
-const mainPath = join(__dirname, '../src')
+const mainPath = join(__dirname, './src')
 const configName = 'vvdoc.config.json'
 const configPath = resolve(root, configName)
 const config = {
