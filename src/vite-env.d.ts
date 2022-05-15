@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-declare const __ROOT__: string
 
 declare interface ChapterType {
   name: string
@@ -11,7 +10,11 @@ declare const __CONFIG__: {
   title: string
   logo: string
   repository: string
-  menus: Record<string, string>
+  menus: {
+    text: string,
+    active: string,
+    path: string
+  }[]
   chapters: Record<string, ChapterType[]>,
   base: string
 }

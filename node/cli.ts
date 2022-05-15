@@ -1,7 +1,7 @@
 import { createServer, build } from 'vite'
 import  * as path from 'path'
 const mode = process.argv[2] || 'dev';
-import createPlugins from './plugin'
+import createPlugins from './plugin.js'
 
 const root = process.cwd()
 

@@ -1,9 +1,11 @@
 import { Plugin, PluginOption } from "vite";
-import { relative, resolve, join } from "path";
 import * as fs from 'fs';
+import * as url from 'url';
+import { resolve, join } from "path";
 import react from "@vitejs/plugin-react";
-// import mdx from "@mdx-js/rollup";
+import { default as mdx } from "@mdx-js/rollup";
 
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const root = process.cwd()
 const mainPath = join(__dirname, '../src')
 const configName = 'vvdoc.config.json'
@@ -38,11 +40,6 @@ const viteDocPlugin: Plugin = {
         }
       }
     },
-    resolve: {
-      alias: {
-        '@root': root
-      }
-    },
     server: {
       fs: {
         allow: [
@@ -52,7 +49,6 @@ const viteDocPlugin: Plugin = {
       }
     },
     define: {
-      __ROOT__: JSON.stringify(relative(__dirname, root)),
       __CONFIG__: JSON.stringify(config)
     },
   }),
@@ -77,6 +73,13 @@ const viteDocPlugin: Plugin = {
   </head>
   <body>
     <div id="app"></div>
+    <script type="module">
+    import RefreshRuntime from "/@react-refresh"
+    RefreshRuntime.injectIntoGlobalHook(window)
+    window.$RefreshReg$ = () => {}
+    window.$RefreshSig$ = () => (type) => type
+    window.__vite_plugin_react_preamble_installed__ = true
+    </script>
     <script type="module" src="/@fs/${mainPath}/main.tsx"></script>
   </body>
 </html>`)
@@ -96,10 +99,11 @@ export default function (): PluginOption[] {
       jsxRuntime: 'automatic',
       include: '**/*.tsx'
     }),
-    // mdx({
-    //   jsxImportSource: 'theme-ui',
-    //   jsxRuntime: 'automatic',
-    //   providerImportSource: '@mdx-js/react'
-    // })
+    mdx({
+      jsxImportSource: 'theme-ui',
+      jsxRuntime: 'automatic',
+      providerImportSource: '@mdx-js/react',
+      include: '**/*.mdx'
+    })
   ]
 }

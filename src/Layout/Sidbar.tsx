@@ -52,6 +52,9 @@ const MenuItem: React.FC<RouteType> = (props) => {
 }
 
 export default function Sidbar(props: { chapters: ChapterType[] }) {
+  if (props.chapters.length <= 0) {
+    return <div/>
+  }
   return (
     <Box
       sx={{

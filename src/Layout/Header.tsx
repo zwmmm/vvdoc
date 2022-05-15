@@ -1,13 +1,11 @@
 import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
 import { Moon, Sun } from '../components/Icons'
 import Space from './Space'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import GithubIcon from "../components/Icons/Github";
+import { useMemo } from "react";
 
-const menus = Object.entries(__CONFIG__.menus).map(([path, name]) => ({
-  name,
-  path
-}))
+const menus = __CONFIG__.menus
 
 function SwitchTheme(props: BoxProps) {
   const [colorMode, setColorMode] = useColorMode()
@@ -29,6 +27,11 @@ function SwitchTheme(props: BoxProps) {
 }
 
 export default function () {
+  const location = useLocation()
+  const activeIndex = useMemo(() => {
+    const index = [...menus].reverse().find(item => new RegExp(item.active).test(location.pathname)) || menus[0]
+    return index.path
+  }, [location])
   const navigate = useNavigate()
   const jumpNav = (path: string) => {
     const matched = path.match(/^http/)
@@ -65,12 +68,13 @@ export default function () {
           {menus.map((item) => (
             <Box
               sx={{
-                cursor: 'pointer'
+                cursor: 'pointer',
+                color: activeIndex === item.path ? 'primary' : 'text'
               }}
               key={item.path}
               onClick={() => jumpNav(item.path)}
             >
-              {item.name}
+              {item.text}
             </Box>
           ))}
           <Box>
