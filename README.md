@@ -10,31 +10,44 @@
 ## 开始使用
 
 ```bash
-npm create vvdoc
-npm i
-npm run dev
+yarn create vvdoc
+yarn
+yarn dev
 ```
+
+## 使用本文档生成的站点
+
+|名称| 地址                          |
+|---|-----------------------------|
+|vvModal| https://vvmodal.vercel.app/ |
 
 ## vvdoc.config.json
 
-```jsonc
+```json
 {
-  "title": "vvModal", // 文档标题
-  "logo": "", // 文档logo
-  "repository": "https://github.com/zwmmm/vvModal", // 代码仓库地址
-  "menus": { // 右上角的菜单
-    "/": "首页",
-    "/apis": "API",
-    "http://www.baidu.com": "外链"
-  },
-  "chapters": { // 对应页面的 侧边栏菜单
-    "apis": [
+  "title": "vvModal",
+  "logo": "",
+  "repository": "https://github.com/zwmmm/vvModal",
+  "menus": [
+    {
+      "text": "首页",
+      "active": "^/",
+      "path": "/"
+    },
+    {
+      "text": "API",
+      "active": "^/apis",
+      "path": "/apis/"
+    }
+  ],
+  "chapters": {
+    "/apis/": [
       {
         "name": "Apis",
         "children": [
           {
             "name": "create",
-            "path": "/apis"
+            "path": "/apis/"
           },
           {
             "name": "show",
@@ -43,6 +56,10 @@ npm run dev
           {
             "name": "antdModal",
             "path": "/apis/antdModal"
+          },
+          {
+            "name": "antdDrawer",
+            "path": "/apis/antdDrawer"
           }
         ]
       },
@@ -66,6 +83,7 @@ npm run dev
     ]
   }
 }
+
 ```
 ## 自定义入口
 
