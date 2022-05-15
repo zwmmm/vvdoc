@@ -12,10 +12,9 @@ const FileTabs = (props: {
   const { activeIndex, files, setIndex } = props
   return (
     <Flex
-      p={2}
       sx={{
         backgroundColor: 'background',
-        borderBottom: '2px solid',
+        borderBottom: '1px solid',
         borderBottomColor: 'muted'
       }}
     >
@@ -26,7 +25,8 @@ const FileTabs = (props: {
             sx={{
               cursor: 'pointer',
               fontWeight: 'bold',
-              borderBottom: '2px solid transparent',
+              borderBottom: '1px solid transparent',
+              fontSize: 1,
               '&.active': {
                 color: 'primary',
                 borderBottomColor: 'primary'
@@ -54,13 +54,15 @@ const Playground: React.FC<{
   const cardStyle = useMemo(() => {
     if (mode === 'light') {
       return {
-        borderRadius: 4,
+        borderRadius: 8,
         boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)'
       }
     }
     return {
+      overflow: 'hidden',
+      borderRadius: 8,
       border: '1px solid',
-      borderColor: 'muted'
+      borderColor: 'muted',
     }
   }, [mode])
   const [activeIndex, setIndex] = useState<number>(0)

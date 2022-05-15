@@ -9,7 +9,8 @@ const Main = styled('div', {
   backgroundColor: 'background',
   color: 'text',
   minHeight: '100vh',
-  fontSize: 14
+  fontSize: 14,
+  lineHeight: '2em'
 })
 
 export default function () {

@@ -16,7 +16,10 @@ function SwitchTheme(props: BoxProps) {
     <Box
       sx={{
         cursor: 'pointer',
-        ...props.sx
+        ...props.sx,
+        '&:hover': {
+          color: 'secondary'
+        }
       }}
       onClick={toggleTheme}
     >
@@ -70,7 +73,10 @@ export default function () {
             <Box
               sx={{
                 cursor: 'pointer',
-                color: activeIndex === item.path ? 'primary' : 'text'
+                color: activeIndex === item.path ? 'primary' : 'text',
+                '&:hover': {
+                  color: 'secondary'
+                }
               }}
               key={item.path}
               onClick={() => jumpNav(item.path)}
@@ -82,7 +88,10 @@ export default function () {
             {config.repository && (
               <a
                 sx={{
-                  color: 'text'
+                  color: 'text',
+                  '&:hover': {
+                    color: 'secondary'
+                  }
                 }}
                 target="_blank"
                 href={config.repository}

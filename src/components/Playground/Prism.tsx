@@ -55,6 +55,7 @@ export interface ThemeUIPrismProps
   className: string
   children: string
   Prism?: HighlightProps['Prism']
+  type?: 'code'
 }
 
 export default function ThemeUIPrism({
@@ -131,7 +132,7 @@ export default function ThemeUIPrism({
           <Themed.pre
             className={`${outerClassName} ${className}`}
             style={style}
-            sx={{ margin: 0 }}
+            sx={{ margin: 0, borderRadius: props.type === 'code' ? 0 : 8 }}
           >
             {tokensWithoutHighlightComments.map((line, i) => {
               const highlightLine = shouldHighlightLine(line, i)
@@ -143,7 +144,6 @@ export default function ThemeUIPrism({
                     background: highlightLine ? 'highlight' : ''
                   }}
                 >
-                  <LineNo>{i + 1}</LineNo>
                   <LineContent>
                     {line.map((token, key) => (
                       <span

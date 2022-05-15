@@ -17,22 +17,12 @@ export default merge(system, {
     }
   },
   styles: {
-    h1: {
-      fontSize: 5,
-      mb: 4,
-      mt: 0
+    ul: {
+      paddingLeft: '1em'
     },
-    h2: {
-      fontSize: 4,
-      my: 4
-    },
-    h3: {
-      fontSize: 3,
-      my: 4
-    },
-    h4: {
-      fontSize: 2,
-      my: 4
+    p: {
+      margin: '0',
+      marginBottom: '1.4em'
     }
   }
 })
