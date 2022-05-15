@@ -1,9 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import Main from './Layout/Main'
-import config from '@config'
+import { useConfig } from "./hooks/config";
 
 export default function () {
+  const config = useConfig()
   return (
     <>
       <Main/>

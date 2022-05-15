@@ -4,7 +4,7 @@ import Space from './Space'
 import { useLocation, useNavigate } from 'react-router-dom'
 import GithubIcon from "../components/Icons/Github";
 import { useMemo } from "react";
-import config from '@config'
+import { useConfig } from "../hooks/config";
 
 function SwitchTheme(props: BoxProps) {
   const [colorMode, setColorMode] = useColorMode()
@@ -26,6 +26,7 @@ function SwitchTheme(props: BoxProps) {
 }
 
 export default function () {
+  const config = useConfig();
   const menus = config.menus
   const location = useLocation()
   const activeIndex = useMemo(() => {
