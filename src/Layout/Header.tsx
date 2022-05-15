@@ -4,8 +4,7 @@ import Space from './Space'
 import { useLocation, useNavigate } from 'react-router-dom'
 import GithubIcon from "../components/Icons/Github";
 import { useMemo } from "react";
-
-const menus = __CONFIG__.menus
+import config from '@config'
 
 function SwitchTheme(props: BoxProps) {
   const [colorMode, setColorMode] = useColorMode()
@@ -27,6 +26,7 @@ function SwitchTheme(props: BoxProps) {
 }
 
 export default function () {
+  const menus = config.menus
   const location = useLocation()
   const activeIndex = useMemo(() => {
     const index = [...menus].reverse().find(item => new RegExp(item.active).test(location.pathname)) || menus[0]
@@ -61,11 +61,11 @@ export default function () {
         }}
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
-          <Image src={__CONFIG__.logo} alt=""/>
-          <Box>{__CONFIG__.title}</Box>
+          <Image src={config.logo} alt=""/>
+          <Box>{config.title}</Box>
         </Space>
         <Space>
-          {menus.map((item) => (
+          {menus.map((item: any) => (
             <Box
               sx={{
                 cursor: 'pointer',
@@ -78,13 +78,13 @@ export default function () {
             </Box>
           ))}
           <Box>
-            {__CONFIG__.repository && (
+            {config.repository && (
               <a
                 sx={{
                   color: 'text'
                 }}
                 target="_blank"
-                href={__CONFIG__.repository}
+                href={config.repository}
               >
                 <GithubIcon/>
               </a>

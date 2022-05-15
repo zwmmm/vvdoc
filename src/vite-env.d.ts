@@ -6,18 +6,18 @@ declare interface ChapterType {
   children?: ChapterType[]
 }
 
-declare const __CONFIG__: {
-  title: string
-  logo: string
-  repository: string
-  menus: {
-    text: string,
-    active: string,
-    path: string
-  }[]
-  chapters: Record<string, ChapterType[]>,
-  base: string
+declare module '@config' {
+  const config: {
+    title: string
+    logo: string
+    repository: string
+    menus: {
+      text: string,
+      active: string,
+      path: string
+    }[]
+    chapters: Record<string, ChapterType[]>,
+    base: string
+  }
+  export default config
 }
-
-declare const __CUSTOM_MAIN__: string
-declare const Playground: any

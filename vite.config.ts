@@ -16,13 +16,15 @@ const config = {
   htmlTags: []
 }
 
-if (fs.existsSync(resolve(root, configName))) {
-  Object.assign(config, JSON.parse(fs.readFileSync(resolve(root, configName), 'utf-8')))
+if (fs.existsSync(configPath)) {
+  Object.assign(config, JSON.parse(fs.readFileSync(configPath, 'utf-8')))
 }
 
 export default defineConfig(async () => {
   const mdx = await import('@mdx-js/rollup')
   return {
+    root,
+    publicDir: resolve(process.cwd(), 'public'),
     plugins: [
       {
         name: 'vvdoc',
@@ -63,6 +65,11 @@ export default defineConfig(async () => {
             })
           }
         },
+        load(id) {
+          if (id === '/@config') {
+            return `export default ${JSON.stringify(config)}`
+          }
+        }
       },
       react({
         jsxImportSource: 'theme-ui',
@@ -78,6 +85,16 @@ export default defineConfig(async () => {
     optimizeDeps: {
       include: [
         'react/jsx-runtime',
+        '@mdx-js/react',
+        '@mdx-js/mdx',
+        '@emotion/react',
+        'react',
+        'react-dom',
+        'react-helmet',
+        'react-router-dom',
+        'theme-ui',
+        'theme-ui/jsx-runtime',
+        'react-dom/client'
       ]
     },
     css: {
@@ -95,11 +112,13 @@ export default defineConfig(async () => {
         ]
       }
     },
-    define: {
-      __CONFIG__: JSON.stringify(config)
-    },
     build: {
-      outDir: resolve(root, 'dist')
+      outDir: resolve(root, 'dist'),
+    },
+    resolve: {
+      alias: {
+        '@config': '/@config'
+      }
     }
   }
 })
