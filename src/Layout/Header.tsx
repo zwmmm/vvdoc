@@ -65,7 +65,7 @@ export default function () {
         }}
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
-          <Image src={config.logo} alt=""/>
+          <Image sx={{ width: '30px' }} src={config.logo} alt=""/>
           <Box>{config.title}</Box>
         </Space>
         <Space>
