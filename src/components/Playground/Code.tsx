@@ -14,7 +14,7 @@ export default function (props: { url: string }) {
     throw new Error(`${url}格式错误，没有后缀名`)
   }
   return (
-    <Prism sx={{ px: 2 }} className={alias[extname] || extname}>
+    <Prism sx={{ margin: 0 }} className={alias[extname] || extname}>
       {codes[`/playground/${url}`] as unknown as string}
     </Prism>
   )

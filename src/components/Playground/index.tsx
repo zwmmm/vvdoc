@@ -108,7 +108,7 @@ const Playground: React.FC<{
             activeIndex={activeIndex}
             setIndex={setIndex}
           />
-          <Box sx={{ height: 500, overflow: 'auto' }}>
+          <Box>
             <Code url={activeUrl}/>
           </Box>
         </>

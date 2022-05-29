@@ -38,7 +38,7 @@ const theme = makeTheme({
     },
     pre: {
       p: 2,
-      fontSize: 2,
+      fontSize: 1,
       ...prism
     }
   }
