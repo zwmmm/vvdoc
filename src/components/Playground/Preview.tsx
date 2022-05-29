@@ -1,9 +1,11 @@
 import { Box } from "theme-ui";
-import React, { Suspense, lazy, memo } from "react";
+import React, { memo } from "react";
+
+const Components = import.meta.globEager('/playground/**/*.tsx')
 
 export const Preview = memo((props: { url: string, sx?: any, className?: string }) => {
   const { url } = props
-  const Comp = lazy(() => import(/* @vite-ignore */ `/playground/${url}`))
+  const Comp = Components[`/playground/${url}`]?.default
   return (
     <Box
       className={props.className}
@@ -14,9 +16,7 @@ export const Preview = memo((props: { url: string, sx?: any, className?: string 
         flex: 1,
       }}
     >
-      <Suspense fallback={null}>
-        <Comp/>
-      </Suspense>
+      <Comp/>
     </Box>
   )
 })
