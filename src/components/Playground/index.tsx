@@ -14,8 +14,6 @@ const FileTabs = (props: {
     <Flex
       sx={{
         backgroundColor: 'background',
-        borderBottom: '1px solid',
-        borderBottomColor: 'muted'
       }}
     >
       {files.map((item, index) => {
@@ -24,7 +22,7 @@ const FileTabs = (props: {
             p={[2]}
             sx={{
               cursor: 'pointer',
-              borderBottom: '1px solid transparent',
+              borderBottom: '2px solid transparent',
               fontSize: 1,
               '&.active': {
                 color: 'primary',
