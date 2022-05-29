@@ -66,7 +66,7 @@ export default function () {
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
           <Image sx={{ width: '30px' }} src={config.logo} alt=""/>
-          <Box>{config.title}</Box>
+          <Box sx={{ fontFamily: 'monospace', fontSize: 2 }}>{config.title}</Box>
         </Space>
         <Space>
           {menus.map((item: any) => (
