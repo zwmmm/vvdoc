@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
-import Preview from './Preview'
 import { Box, Flex, Grid, useColorMode } from 'theme-ui'
+import { Preview } from './Preview'
 import clsx from 'clsx'
 import Code from './Code'
 
@@ -24,7 +24,6 @@ const FileTabs = (props: {
             p={[2]}
             sx={{
               cursor: 'pointer',
-              fontWeight: 'bold',
               borderBottom: '1px solid transparent',
               fontSize: 1,
               '&.active': {
@@ -45,8 +44,8 @@ const FileTabs = (props: {
 }
 
 const Playground: React.FC<{
-  files: string[]
-  children: React.ReactNode
+  main: string
+  files?: string[]
   layout?: 'horizontal' | 'vertical'
 }> = function (props) {
   const layout = props.layout || 'horizontal'
@@ -66,19 +65,20 @@ const Playground: React.FC<{
     }
   }, [mode])
   const [activeIndex, setIndex] = useState<number>(0)
-  const activeUrl = props.files[activeIndex]
+  const files = props.files || [props.main]
+  const activeUrl = files[activeIndex]
   const [showCode, setShowCode] = useState(false)
   if (layout === 'horizontal') {
     return (
       <Box sx={cardStyle}>
         <FileTabs
-          files={props.files}
+          files={files}
           activeIndex={activeIndex}
           setIndex={setIndex}
         />
         <Grid gap={0} columns="50% 50%" sx={{ height: 500 }}>
-          <Code url={activeUrl} />
-          <Preview>{props.children}</Preview>
+          <Code url={activeUrl}/>
+          <Preview url={props.main}/>
         </Grid>
       </Box>
     )
@@ -86,7 +86,7 @@ const Playground: React.FC<{
   return (
     <Box sx={cardStyle} className="ukyou-playground">
       <Box>
-        <Preview sx={{ background: 'background' }}>{props.children}</Preview>
+        <Preview sx={{ background: 'background' }} url={props.main}/>
         <Flex
           sx={{
             height: '60px',
@@ -104,12 +104,12 @@ const Playground: React.FC<{
       {showCode && (
         <>
           <FileTabs
-            files={props.files}
+            files={files}
             activeIndex={activeIndex}
             setIndex={setIndex}
           />
           <Box sx={{ height: 500, overflow: 'auto' }}>
-            <Code url={activeUrl} />
+            <Code url={activeUrl}/>
           </Box>
         </>
       )}

@@ -4,7 +4,6 @@ import { join, resolve } from "path";
 import * as fs from 'fs';
 
 const root = process.cwd()
-const mainPath = join(__dirname, './src')
 const configName = 'vvdoc.config.json'
 const configPath = resolve(root, configName)
 const config = {
@@ -12,13 +11,16 @@ const config = {
   logo: "",
   repository: "zwmmm/vvDoc",
   menus: {},
-  chapters: {},
-  htmlTags: []
+  chapters: {}
 }
 
-if (fs.existsSync(configPath)) {
-  Object.assign(config, JSON.parse(fs.readFileSync(configPath, 'utf-8')))
+function mergeConfig() {
+  if (fs.existsSync(configPath)) {
+    Object.assign(config, JSON.parse(fs.readFileSync(configPath, 'utf-8')))
+  }
 }
+
+mergeConfig()
 
 export default defineConfig(async () => {
   const mdx = await import('@mdx-js/rollup')
@@ -31,6 +33,19 @@ export default defineConfig(async () => {
         load(id) {
           if (id === '/@config') {
             return `export default ${JSON.stringify(config)}`
+          }
+        },
+        configureServer(server) {
+          // 监听配置文件变更
+          if (configPath) {
+            server.watcher.add(configPath)
+          }
+        },
+        async handleHotUpdate(ctx) {
+          const { file, server } = ctx
+          if (file === configPath) {
+            mergeConfig()
+            return [server.moduleGraph.getModuleById('/@config')]
           }
         }
       },

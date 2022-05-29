@@ -1,4 +1,13 @@
-# 文档生成工具
+<h1 align='center'>
+  <samp>vvdoc</samp>
+  <a href='https://www.npmjs.com/package/vvdoc'>
+    <img src='https://img.shields.io/npm/v/vvdoc?color=333&labelColor=555&style=flat-square' alt='version'/>
+  </a>
+</h1>
+
+<p align='center'>
+  <samp>基于 Vite 快速生成文档站点</samp>
+<br>
 
 ## 特性
 
@@ -101,3 +110,9 @@ export default function (props: any) {
   )
 }
 ```
+
+## 内置组件
+
+- Message,
+- Alert,
+- Playground

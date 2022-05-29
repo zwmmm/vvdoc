@@ -12,6 +12,9 @@ function DefaultMain(props: any) {
   return props.children
 }
 const root = ReactDOM.createRoot(document.getElementById('app') as HTMLElement)
+
+console.log(theme)
+
 root.render(
   <ThemeProvider theme={theme} components={components}>
     <BrowserRouter>

@@ -2,10 +2,9 @@ import { Box, Grid } from 'theme-ui'
 import Sidbar from './Sidbar'
 import React, { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { useConfig } from "../hooks/config";
+import { config } from "../config";
 
 export default function Container(props: { children: React.ReactNode }) {
-  const config = useConfig()
   const location = useLocation()
   const chapters = useMemo(() => {
     const item = [...config.menus].reverse().find(item => new RegExp(item.active).test(location.pathname)) || config.menus[0]

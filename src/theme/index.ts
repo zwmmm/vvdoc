@@ -1,7 +1,9 @@
 import { system } from '@theme-ui/presets'
 import { merge } from 'theme-ui'
+import prism from '@theme-ui/prism/presets/dracula.json'
+import { makeTheme } from '@theme-ui/css/utils'
 
-export default merge(system, {
+const theme = makeTheme({
   colors: {
     modes: {
       dark: {
@@ -17,12 +19,29 @@ export default merge(system, {
     }
   },
   styles: {
-    ul: {
-      paddingLeft: '1em'
-    },
     p: {
       margin: '0',
       marginBottom: '1.4em'
+    },
+    ul: {
+      pl: '2em',
+    },
+    li: {
+      pl: '0.2em',
+      '::marker': {
+        color: 'primary'
+      }
+    },
+    code: {
+      fontFamily: 'monospace',
+      fontSize: 1,
+    },
+    pre: {
+      p: 2,
+      fontSize: 2,
+      ...prism
     }
   }
 })
+
+export default merge(system, theme)
