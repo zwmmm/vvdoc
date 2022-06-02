@@ -19,15 +19,16 @@ const FileTabs = (props: {
       {files.map((item, index) => {
         return (
           <Box
-            p={[2]}
+            px={3}
+            py={2}
             sx={{
               cursor: 'pointer',
               borderBottom: '2px solid transparent',
               fontSize: 1,
               '&.active': {
                 color: 'primary',
-                borderBottomColor: 'primary'
-              }
+                borderBottomColor: 'primary',
+              },
             }}
             key={index}
             className={clsx({ active: activeIndex === index })}
@@ -52,7 +53,7 @@ const Playground: React.FC<{
     if (mode === 'light') {
       return {
         borderRadius: 8,
-        boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)'
+        boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
       }
     }
     return {
@@ -69,14 +70,10 @@ const Playground: React.FC<{
   if (layout === 'horizontal') {
     return (
       <Box sx={cardStyle}>
-        <FileTabs
-          files={files}
-          activeIndex={activeIndex}
-          setIndex={setIndex}
-        />
+        <FileTabs files={files} activeIndex={activeIndex} setIndex={setIndex} />
         <Grid gap={0} columns="50% 50%" sx={{ height: 500 }}>
-          <Code url={activeUrl}/>
-          <Preview url={props.main}/>
+          <Code url={activeUrl} />
+          <Preview url={props.main} />
         </Grid>
       </Box>
     )
@@ -84,7 +81,7 @@ const Playground: React.FC<{
   return (
     <Box sx={cardStyle} className="ukyou-playground">
       <Box>
-        <Preview sx={{ background: 'background' }} url={props.main}/>
+        <Preview sx={{ background: 'background' }} url={props.main} />
         <Flex
           sx={{
             height: '60px',
@@ -92,7 +89,7 @@ const Playground: React.FC<{
             borderBottom: (t) => `1px solid ${t.colors?.muted}`,
             cursor: 'pointer',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
           onClick={() => setShowCode((val) => !val)}
         >
@@ -107,7 +104,7 @@ const Playground: React.FC<{
             setIndex={setIndex}
           />
           <Box>
-            <Code url={activeUrl}/>
+            <Code url={activeUrl} />
           </Box>
         </>
       )}

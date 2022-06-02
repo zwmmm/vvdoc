@@ -10,7 +10,6 @@ export default function Icon(props: IconProps) {
       className={props.className}
       sx={{ display: 'block' }}
       xmlns="http://www.w3.org/2000/svg"
-      width={props.size}
       height={props.size}
       viewBox="0 0 24 24"
       fill="none"
@@ -25,5 +24,5 @@ export default function Icon(props: IconProps) {
 }
 
 Icon.defaultProps = {
-  size: 24
+  size: 20,
 }

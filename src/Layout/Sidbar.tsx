@@ -1,7 +1,8 @@
+import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box } from 'theme-ui'
+import { alpha } from '@theme-ui/color'
 import { RouteType } from '../type'
-import React from 'react'
 
 const SubMenu: React.FC<{
   title: string
@@ -11,10 +12,11 @@ const SubMenu: React.FC<{
     <>
       <Box
         pt={3}
+        px={2}
         pb={1}
         sx={{
           cursor: 'pointer',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
         }}
       >
         {props.title}
@@ -35,13 +37,19 @@ const MenuItem: React.FC<RouteType> = (props) => {
   }
   return (
     <Box
+      px={2}
       py={1}
-      my={1}
+      my={2}
       sx={{
         cursor: 'pointer',
         fontWeight: 'bold',
         color: active ? 'primary' : 'gray',
-        borderRadius: 4
+        backgroundColor: active ? alpha('primary', 0.1) : 'transparent',
+        borderRadius: 4,
+        '&:hover': {
+          color: 'text',
+          backgroundColor: alpha('muted', 0.5),
+        },
       }}
       key={name}
       onClick={go}
@@ -53,13 +61,13 @@ const MenuItem: React.FC<RouteType> = (props) => {
 
 export default function Sidbar(props: { chapters: ChapterType[] }) {
   if (props.chapters.length <= 0) {
-    return <div/>
+    return <div />
   }
   return (
     <Box
       sx={{
         backgroundColor: (t) => t.colors?.background,
-        pr: 3
+        pr: 3,
       }}
     >
       <Box
@@ -67,7 +75,7 @@ export default function Sidbar(props: { chapters: ChapterType[] }) {
           position: 'sticky',
           height: 'calc(100vh - 80px)',
           overflowY: 'auto',
-          top: 80
+          top: 80,
         }}
       >
         {props.chapters.map((item) => {

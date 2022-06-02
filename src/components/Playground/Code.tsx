@@ -1,8 +1,8 @@
 import Prism from '@theme-ui/prism'
 
 const alias: { [key: string]: string } = {
-  'js': 'javascript',
-  'sh': 'bash'
+  js: 'javascript',
+  sh: 'bash',
 }
 
 const codes = import.meta.globEager('/playground/**/*.tsx', { as: 'raw' })
@@ -14,7 +14,10 @@ export default function (props: { url: string }) {
     throw new Error(`${url}格式错误，没有后缀名`)
   }
   return (
-    <Prism sx={{ margin: 0 }} className={alias[extname] || extname}>
+    <Prism
+      sx={{ margin: 0, borderRadius: 0 }}
+      className={alias[extname] || extname}
+    >
       {codes[`/playground/${url}`] as unknown as string}
     </Prism>
   )

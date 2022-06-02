@@ -1,10 +1,11 @@
+import { useMemo } from 'react'
+import { alpha } from '@theme-ui/color'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
 import { Moon, Sun } from '../components/Icons'
+import GithubIcon from '../components/Icons/Github'
+import { config } from '../config'
 import Space from './Space'
-import { useLocation, useNavigate } from 'react-router-dom'
-import GithubIcon from "../components/Icons/Github";
-import { useMemo } from "react";
-import { config } from "../config";
 
 function SwitchTheme(props: BoxProps) {
   const [colorMode, setColorMode] = useColorMode()
@@ -18,12 +19,12 @@ function SwitchTheme(props: BoxProps) {
         cursor: 'pointer',
         ...props.sx,
         '&:hover': {
-          color: 'secondary'
-        }
+          color: 'secondary',
+        },
       }}
       onClick={toggleTheme}
     >
-      {colorMode === 'dark' ? <Sun/> : <Moon/>}
+      {colorMode === 'dark' ? <Sun /> : <Moon />}
     </Box>
   )
 }
@@ -32,7 +33,11 @@ export default function () {
   const menus = config.menus
   const location = useLocation()
   const activeIndex = useMemo(() => {
-    const index = [...menus].reverse().find(item => new RegExp(item.active).test(location.pathname)) || menus[0]
+    const index =
+      [...menus]
+        .reverse()
+        .find((item) => new RegExp(item.active).test(location.pathname)) ||
+      menus[0]
     return index.path
   }, [location])
   const navigate = useNavigate()
@@ -48,35 +53,41 @@ export default function () {
   return (
     <Box
       sx={{
-        backgroundColor: 'highlight',
-        fontSize: 1,
-        fontWeight: 'bold',
+        backgroundColor: alpha('background', 0.6),
+        fontSize: 2,
         position: 'fixed',
         zIndex: 100,
-        width: '100%'
+        width: '100%',
+        borderBottom: '1px solid',
+        borderColor: 'muted',
+        backdropFilter: 'blur(12px)',
       }}
     >
       <Container
         sx={{
-          height: 50,
+          height: 64,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}
       >
         <Space onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
-          <Image sx={{ width: '30px' }} src={config.logo} alt=""/>
-          <Box sx={{ fontFamily: 'monospace', fontSize: 2 }}>{config.title}</Box>
+          <Image sx={{ height: '30px' }} src={config.logo} alt="" />
+          <Box
+            sx={{ fontFamily: 'monospace', fontSize: 2, fontWeight: 'bold' }}
+          >
+            {config.title}
+          </Box>
         </Space>
         <Space>
           {menus.map((item: any) => (
             <Box
               sx={{
                 cursor: 'pointer',
-                color: activeIndex === item.path ? 'primary' : 'text',
+                color: activeIndex === item.path ? 'text' : 'gray',
                 '&:hover': {
-                  color: 'secondary'
-                }
+                  color: 'secondary',
+                },
               }}
               key={item.path}
               onClick={() => jumpNav(item.path)}
@@ -90,17 +101,17 @@ export default function () {
                 sx={{
                   color: 'text',
                   '&:hover': {
-                    color: 'secondary'
-                  }
+                    color: 'secondary',
+                  },
                 }}
                 target="_blank"
                 href={config.repository}
               >
-                <GithubIcon/>
+                <GithubIcon />
               </a>
             )}
           </Box>
-          <SwitchTheme/>
+          <SwitchTheme />
         </Space>
       </Container>
     </Box>
