@@ -52,12 +52,12 @@ export default function (options: { root: string }): any {
         })
         const { value } = await compiler.process(src)
         const content = String(value).replace('export default MDXContent;', '')
-        const props = JSON.stringify({
+        const meta = JSON.stringify({
           ...(compiler.data('headingMeta') as HeadingMeta),
         })
         const prefix = ``
         const suffix = `export default function(props) {
-          return _jsx("div", Object.assign({}, ${props}, { children: _jsx(MDXContent, props) }))
+          return _jsx("div", { children: _jsx(MDXContent, Object.assign({}, props, ${meta})) })
         }`
         return {
           map: null,
