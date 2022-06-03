@@ -10,7 +10,7 @@ const Main = styled('div', {
   color: 'text',
   minHeight: '100vh',
   fontSize: 14,
-  lineHeight: '2em'
+  lineHeight: '2em',
 })
 
 export default function () {
@@ -20,7 +20,7 @@ export default function () {
       <Container
         sx={{
           paddingTop: 80,
-          paddingBottom: 4
+          paddingBottom: 4,
         }}
       >
         <Routes />

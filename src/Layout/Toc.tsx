@@ -79,10 +79,12 @@ export const Toc: React.FC<{
     <div>
       <div
         sx={{
-          position: 'fixed',
+          position: 'sticky',
           top: 80,
           width: 224,
+          height: (t) => `calc(100vh - 80px - ${t.space?.[4]}px)`,
           color: 'text',
+          overflowY: 'auto',
         }}
       >
         <div

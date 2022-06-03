@@ -86,7 +86,7 @@ export default function Sidbar(props: { className?: string; sx?: any }) {
       <Box
         sx={{
           position: 'sticky',
-          height: 'calc(100vh - 80px)',
+          height: (t) => `calc(100vh - 80px - ${t.space?.[4]}px)`,
           overflowY: 'auto',
           top: 80,
         }}

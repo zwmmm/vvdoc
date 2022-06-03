@@ -48,6 +48,7 @@ const theme = makeTheme({
       borderBottom: '1px solid',
       borderColor: 'muted',
       pb: 2,
+      mt: 40,
     },
   },
 })
