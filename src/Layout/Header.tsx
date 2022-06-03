@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
 import { alpha } from '@theme-ui/color'
+import { useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box, BoxProps, Container, Image, useColorMode } from 'theme-ui'
 import { Moon, Sun } from '../components/Icons'
 import GithubIcon from '../components/Icons/Github'
 import { config } from '../config'
+import { Search } from './Search'
 import Space from './Space'
 
 function SwitchTheme(props: BoxProps) {
@@ -18,9 +19,6 @@ function SwitchTheme(props: BoxProps) {
       sx={{
         cursor: 'pointer',
         ...props.sx,
-        '&:hover': {
-          color: 'secondary',
-        },
       }}
       onClick={toggleTheme}
     >
@@ -85,9 +83,6 @@ export default function () {
               sx={{
                 cursor: 'pointer',
                 color: activeIndex === item.path ? 'text' : 'gray',
-                '&:hover': {
-                  color: 'secondary',
-                },
               }}
               key={item.path}
               onClick={() => jumpNav(item.path)}
@@ -96,13 +91,13 @@ export default function () {
             </Box>
           ))}
           <Box>
+            <Search />
+          </Box>
+          <Box>
             {config.repository && (
               <a
                 sx={{
                   color: 'text',
-                  '&:hover': {
-                    color: 'secondary',
-                  },
                 }}
                 target="_blank"
                 href={config.repository}

@@ -3,6 +3,7 @@ import Prism from '@theme-ui/prism'
 import { Alert, Message } from 'theme-ui'
 import Blockquote from '../components/Blockquote'
 import Playground from '../components/Playground'
+import { Wrapper } from '../Layout/Wrapper'
 
 const components = {
   blockquote: Blockquote,
@@ -10,7 +11,8 @@ const components = {
   code: Prism,
   Message,
   Alert,
-  Playground
+  Playground,
+  wrapper: Wrapper,
 }
 
 export default components
