@@ -97,6 +97,7 @@ export default function Sidbar(props: { className?: string; sx?: any }) {
           height: (t) => `calc(100vh - 80px - ${t.space?.[4]}px)`,
           overflowY: 'auto',
           top: 80,
+          fontSize: 1,
         }}
       >
         {chapters.map((item) => {

@@ -85,6 +85,7 @@ export const Toc: React.FC<{
           height: (t) => `calc(100vh - 80px - ${t.space?.[4]}px)`,
           color: 'text',
           overflowY: 'auto',
+          fontSize: 1,
         }}
       >
         <div
