@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import Container from '../Layout/Container'
-import NotFont from "../Layout/NotFont";
+import NotFont from '../Layout/NotFont'
 
 const pages = import.meta.globEager('/docs/**/*.mdx')
 
@@ -19,14 +18,9 @@ export default () => {
     return pathToFile(location.pathname)
   }, [location.pathname])
   const Page = pages[pageFilePath]?.default || NotFont
-  const Element = (
-    <Container>
-      <Page/>
-    </Container>
-  )
   return (
     <Routes>
-      <Route path={location.pathname} element={Element}/>
+      <Route path={location.pathname} element={<Page />} />
     </Routes>
   )
 }
