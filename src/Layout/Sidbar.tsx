@@ -1,5 +1,5 @@
 import { alpha } from '@theme-ui/color'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box } from 'theme-ui'
 import { config } from '../config'
@@ -36,6 +36,14 @@ const MenuItem: React.FC<RouteType> = (props) => {
     navigate(path as string)
     window.scrollTo(0, 0)
   }
+  useEffect(() => {
+    if (active) {
+      document.title = `${name}-${config.title}`
+    }
+    return () => {
+      document.title = config.title
+    }
+  }, [active])
   return (
     <Box
       px={2}
