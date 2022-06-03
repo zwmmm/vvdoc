@@ -5,6 +5,8 @@
     "vvdoc": "./bin/vvDoc.js"
   },
   "dependencies": {
+    "@docsearch/css": "^3.1.0",
+    "@docsearch/react": "^3.1.0",
     "@emotion/react": "^11.9.0",
     "@mdx-js/mdx": "^2.1.1",
     "@mdx-js/react": "^2.1.1",

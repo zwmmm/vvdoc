@@ -18,6 +18,11 @@ export default function (options: { root: string }): any {
     repository: 'zwmmm/vvDoc',
     menus: {},
     chapters: {},
+    docsearch: {
+      appId: '',
+      indexName: '',
+      apiKey: '',
+    },
   }
 
   function mergeConfig() {

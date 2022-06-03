@@ -12,12 +12,17 @@ declare module '@config' {
     logo: string
     repository: string
     menus: {
-      text: string,
-      active: string,
+      text: string
+      active: string
       path: string
     }[]
-    chapters: Record<string, ChapterType[]>,
+    chapters: Record<string, ChapterType[]>
     base: string
+    docsearch: {
+      appId: string
+      indexName: string
+      apiKey: string
+    }
   }
   export default config
 }

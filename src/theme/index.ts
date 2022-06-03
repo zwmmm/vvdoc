@@ -2,12 +2,13 @@ import { makeTheme } from '@theme-ui/css/utils'
 import { system } from '@theme-ui/presets'
 import prism from '@theme-ui/prism/presets/dracula.json'
 import { merge } from 'theme-ui'
+import { lighten } from '@theme-ui/color'
 
 const theme = makeTheme({
   colors: {
     modes: {
       dark: {
-        primary: '#1976d2',
+        primary: '#5468ff',
         muted: '#303030',
         background: '#141414',
         highlight: '#2c2c29',
@@ -21,6 +22,17 @@ const theme = makeTheme({
     },
   },
   styles: {
+    root: {
+      fontFamily:
+        'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
+    },
+    a: {
+      px: 1,
+      textDecoration: 'none',
+      '&:hover': {
+        color: lighten('primary', 0.05),
+      },
+    },
     p: {
       margin: '0',
       marginBottom: '1.4em',

@@ -9,7 +9,7 @@ const Main = styled('div', {
   backgroundColor: 'background',
   color: 'text',
   minHeight: '100vh',
-  fontSize: 14,
+  fontSize: 16,
   lineHeight: '2em',
 })
 

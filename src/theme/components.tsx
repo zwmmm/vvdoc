@@ -5,6 +5,7 @@ import Blockquote from '../components/Blockquote'
 import Playground from '../components/Playground'
 import { HeaderLink } from '../Layout/HeaderLink'
 import { Wrapper } from '../Layout/Wrapper'
+import { A } from '../Layout/A'
 
 interface HeadingProps {
   children?: React.ReactNode
@@ -49,6 +50,7 @@ const components = {
       {children}
     </HeaderLink>
   ),
+  a: A,
 }
 
 export default components
