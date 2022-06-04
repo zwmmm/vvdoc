@@ -25,6 +25,8 @@ const theme = merge(
     },
     styles: {
       root: {
+        '--docsearch-text-color': (t) => `${t.colors?.gray} !important`,
+        '--docsearch-muted-color': (t) => `${t.colors?.gray} !important`,
         '--docsearch-primary-color': (t) => `${t.colors?.primary}!important`,
         '--docsearch-logo-color': (t) => `${t.colors?.primary}!important`,
         '--docsearch-key-gradient': (t) => `transparent !important`,
@@ -43,7 +45,7 @@ const theme = merge(
           boxShadow: 'none',
           display: 'block',
           margin: '2px 0 0',
-          border: (t) => `1px solid ${t.colors?.background}`,
+          border: (t) => `1px solid ${t.colors?.gray}`,
           borderRight: 'none',
           borderRadius: `4px 0 0 4px`,
           pl: '6px',
@@ -57,7 +59,7 @@ const theme = merge(
             'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
         },
         '& .DocSearch-Button-Key + .DocSearch-Button-Key': {
-          borderRight: (t) => `1px solid ${t.colors?.background}`,
+          borderRight: (t) => `1px solid ${t.colors?.gray}`,
           borderLeft: 'none',
           borderRadius: `0 4px 4px 0`,
           pl: '2px',
