@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import vvdoc from './plugins/vvdoc'
+import vvdoc from './service/vvdoc'
 
 const root = process.cwd()
 

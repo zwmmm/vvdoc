@@ -1,7 +1,8 @@
-import * as fs from 'fs'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import { config as defaultConfig } from './config.default'
 import { toc } from './toc'
+import { tryRequire } from './tryRequire'
 
 export interface HeadingMeta {
   headings: any[]
@@ -9,35 +10,24 @@ export interface HeadingMeta {
 
 export default function (options: { root: string }): any {
   const { root } = options
-
-  const configName = 'vvdoc.config.json'
+  const configName = './vvdoc.config.ts'
   const configPath = resolve(root, configName)
-  const config = {
-    title: 'vvDoc',
-    logo: '',
-    repository: 'zwmmm/vvDoc',
-    menus: {},
-    chapters: {},
-    docsearch: {
-      appId: '',
-      indexName: '',
-      apiKey: '',
-    },
+
+  function getConfig() {
+    const module = tryRequire(configName, root)
+    return JSON.stringify({
+      ...defaultConfig,
+      ...(module || {}),
+    })
   }
 
-  function mergeConfig() {
-    if (fs.existsSync(configPath)) {
-      Object.assign(config, JSON.parse(fs.readFileSync(configPath, 'utf-8')))
-    }
-  }
-
-  mergeConfig()
+  let userConfig = getConfig()
 
   return {
     name: 'vvdoc',
     load(id) {
       if (id === '/@config') {
-        return `export default ${JSON.stringify(config)}`
+        return `export default ${userConfig}`
       }
     },
     async transform(src, id) {
@@ -79,7 +69,7 @@ export default function (options: { root: string }): any {
     async handleHotUpdate(ctx) {
       const { file, server } = ctx
       if (file === configPath) {
-        mergeConfig()
+        userConfig = getConfig()
         return [server.moduleGraph.getModuleById('/@config')]
       }
     },

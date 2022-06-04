@@ -3,10 +3,11 @@ declare module '*.mdx' {
   export default MDXComponent
 }
 
+// @ts-ignore
 declare global {
   const Playground: (props: {
-    main: string,
-    files?: string[],
+    main: string
+    files?: string[]
     layout?: 'horizontal' | 'vertical'
   }) => JSX.Element
   const Message: (props: any) => JSX.Element
