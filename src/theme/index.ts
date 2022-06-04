@@ -99,6 +99,7 @@ const theme = merge(
         p: `6px 0px !important`,
         fontSize: 1,
         borderRadius: 12,
+        display: 'grid',
         '.token-line': {
           pl: 3,
           borderLeft: '2px solid transparent',
