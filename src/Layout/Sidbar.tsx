@@ -2,6 +2,7 @@ import { alpha } from '@theme-ui/color'
 import React, { useEffect, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box } from 'theme-ui'
+import { ChapterType } from '../../types'
 import { config } from '../config'
 import { RouteType } from '../type'
 
@@ -47,7 +48,6 @@ const MenuItem: React.FC<RouteType> = (props) => {
   return (
     <Box
       px={2}
-      py={1}
       my={2}
       sx={{
         cursor: 'pointer',

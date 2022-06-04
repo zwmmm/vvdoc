@@ -50,7 +50,6 @@ function Item({
       ref={ref}
       sx={{
         ...indent(heading.depth),
-        my: 1,
         listStyle: 'none',
       }}
     >
