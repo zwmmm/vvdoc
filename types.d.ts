@@ -1,5 +1,6 @@
 import { Theme } from 'theme-ui'
 import { Components } from '@mdx-js/react/lib'
+import { UserConfig } from 'vite'
 
 export interface ChapterType {
   name: string
@@ -28,5 +29,7 @@ export type Config = Partial<{
     components?: Components
   }
 }>
+
+export type BuildConfig = UserConfig
 
 export { Theme, Components }

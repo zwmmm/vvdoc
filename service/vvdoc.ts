@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vite'
 import { config as defaultConfig } from './config.default'
 import { toc } from './toc'
 import { tryRequire } from './tryRequire'
@@ -17,7 +17,7 @@ export default function (options: { root: string }): any {
     const module = tryRequire(configName, root)
     return JSON.stringify({
       ...defaultConfig,
-      ...(module || {}),
+      ...(module.config || {}),
     })
   }
 
@@ -74,33 +74,37 @@ export default function (options: { root: string }): any {
       }
     },
     config() {
-      return defineConfig({
-        root,
-        publicDir: resolve(process.cwd(), 'public'),
-        optimizeDeps: {
-          include: ['react/jsx-runtime', 'theme-ui/jsx-runtime'],
-        },
-        css: {
-          preprocessorOptions: {
-            less: {
-              javascriptEnabled: true,
+      const module = tryRequire(configName, root)
+      return mergeConfig(
+        defineConfig({
+          root,
+          publicDir: resolve(process.cwd(), 'public'),
+          optimizeDeps: {
+            include: ['react/jsx-runtime', 'theme-ui/jsx-runtime'],
+          },
+          css: {
+            preprocessorOptions: {
+              less: {
+                javascriptEnabled: true,
+              },
             },
           },
-        },
-        server: {
-          fs: {
-            allow: [resolve(__dirname, '../'), root],
+          server: {
+            fs: {
+              allow: [resolve(__dirname, '../'), root],
+            },
           },
-        },
-        build: {
-          outDir: resolve(root, 'dist'),
-        },
-        resolve: {
-          alias: {
-            '@config': '/@config',
+          build: {
+            outDir: resolve(root, 'dist'),
           },
-        },
-      })
+          resolve: {
+            alias: {
+              '@config': '/@config',
+            },
+          },
+        }),
+        module?.buildConfig || {}
+      )
     },
   }
 }
