@@ -18,7 +18,6 @@ export type Config = Partial<{
     path: string
   }[]
   chapters: Record<string, ChapterType[]>
-  base: string
   docsearch: {
     appId: string
     indexName: string

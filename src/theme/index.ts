@@ -25,9 +25,44 @@ const theme = merge(
     },
     styles: {
       root: {
-        '--docsearch-primary-color': (t) => t.colors?.primary + '!important',
+        '--docsearch-primary-color': (t) => `${t.colors?.primary}!important`,
+        '--docsearch-logo-color': (t) => `${t.colors?.primary}!important`,
+        '--docsearch-key-gradient': (t) => `transparent !important`,
+        '--docsearch-searchbox-background': (t) =>
+          `${t.colors?.muted}!important`,
+        '--docsearch-modal-shadow': (t) => `none !important`,
+        '--docsearch-footer-shadow': (t) => `none !important`,
+        '--docsearch-footer-background': (t) => `${t.colors?.muted}!important`,
+        '--docsearch-modal-background': (t) =>
+          `${t.colors?.background}!important`,
+        '--docsearch-searchbox-focus-background': (t) =>
+          `${t.colors?.muted}!important`,
         fontFamily:
           'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
+        '& .DocSearch-Button-Key': {
+          boxShadow: 'none',
+          display: 'block',
+          margin: '2px 0 0',
+          border: (t) => `1px solid ${t.colors?.background}`,
+          borderRight: 'none',
+          borderRadius: `4px 0 0 4px`,
+          pl: '6px',
+          minWidth: 0,
+          width: 'auto',
+          height: 22,
+          lineHeight: `22px`,
+          fontSize: 0,
+          transition: `color .5s,border-color .5s`,
+          fontFamily:
+            'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+        },
+        '& .DocSearch-Button-Key + .DocSearch-Button-Key': {
+          borderRight: (t) => `1px solid ${t.colors?.background}`,
+          borderLeft: 'none',
+          borderRadius: `0 4px 4px 0`,
+          pl: '2px',
+          pr: '6px',
+        },
       },
       a: {
         px: 1,
