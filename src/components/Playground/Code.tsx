@@ -5,6 +5,7 @@ const alias: { [key: string]: string } = {
   sh: 'bash',
 }
 
+// @ts-ignore
 const codes = import.meta.globEager('/playground/**/*.tsx', { as: 'raw' })
 
 export default function (props: { url: string }) {

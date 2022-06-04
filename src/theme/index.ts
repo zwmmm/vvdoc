@@ -1,8 +1,9 @@
 import { lighten } from '@theme-ui/color'
 import { makeTheme } from '@theme-ui/css/utils'
 import { system } from '@theme-ui/presets'
-import prism from '@theme-ui/prism/presets/dracula.json'
-import { merge } from 'theme-ui'
+import dark from '@theme-ui/prism/presets/dracula.json'
+import light from '@theme-ui/prism/presets/prism.json'
+import { merge, useColorMode } from 'theme-ui'
 import { config } from '../config'
 
 const theme = merge(
@@ -12,7 +13,7 @@ const theme = merge(
         dark: {
           primary: '#5468ff',
           muted: '#303030',
-          background: '#141414',
+          background: '#111',
           highlight: '#2c2c29',
         },
       },
@@ -89,12 +90,28 @@ const theme = merge(
       code: {
         fontFamily: 'monospace',
         fontSize: 1,
+        p: 1,
+        background: 'muted',
+        borderRadius: 6,
       },
       pre: {
-        p: 3,
+        background: 'muted',
+        p: `6px 0px !important`,
         fontSize: 1,
         borderRadius: 12,
-        ...prism,
+        '.token-line': {
+          pl: 3,
+          borderLeft: '2px solid transparent',
+        },
+        '.token-line.highlight': {
+          background: `rgba(200, 200, 255, .1)`,
+          borderLeftColor: 'primary',
+        },
+        // @ts-ignore
+        variant: () => {
+          const [mode] = useColorMode()
+          return `prism.${mode}`
+        },
       },
       h2: {
         borderBottom: '1px solid',
@@ -102,6 +119,10 @@ const theme = merge(
         pb: 2,
         mt: 40,
       },
+    },
+    prism: {
+      dark,
+      light,
     },
   }),
   config?.theme?.styles || {}

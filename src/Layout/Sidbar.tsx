@@ -1,9 +1,8 @@
 import { alpha } from '@theme-ui/color'
-import React, { useEffect, useMemo } from 'react'
+import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Box } from 'theme-ui'
 import { ChapterType } from '../../types'
-import { config } from '../config'
 import { RouteType } from '../type'
 
 const SubMenu: React.FC<{
@@ -37,14 +36,6 @@ const MenuItem: React.FC<RouteType> = (props) => {
     navigate(path as string)
     window.scrollTo(0, 0)
   }
-  useEffect(() => {
-    if (active) {
-      document.title = `${name}-${config.title}`
-    }
-    return () => {
-      document.title = config.title
-    }
-  }, [active])
   return (
     <Box
       px={2}
@@ -68,17 +59,12 @@ const MenuItem: React.FC<RouteType> = (props) => {
   )
 }
 
-export default function Sidbar(props: { className?: string; sx?: any }) {
-  const location = useLocation()
-  const chapters: ChapterType[] = useMemo(() => {
-    const item =
-      [...config.menus]
-        .reverse()
-        .find((item) => new RegExp(item.active).test(location.pathname)) ||
-      config.menus[0]
-    return config.chapters[item.path] || []
-  }, [location])
-
+export default function Sidbar(props: {
+  className?: string
+  sx?: any
+  chapters: ChapterType[]
+}) {
+  const { chapters } = props
   if (chapters.length <= 0) {
     return <div />
   }

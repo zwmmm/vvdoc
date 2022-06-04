@@ -1,8 +1,8 @@
+import clsx from 'clsx'
 import React, { useMemo, useState } from 'react'
 import { Box, Flex, Grid, useColorMode } from 'theme-ui'
-import { Preview } from './Preview'
-import clsx from 'clsx'
 import Code from './Code'
+import { Preview } from './Preview'
 
 const FileTabs = (props: {
   files: string[]
@@ -14,6 +14,7 @@ const FileTabs = (props: {
     <Flex
       sx={{
         backgroundColor: 'background',
+        borderRadius: 8,
       }}
     >
       {files.map((item, index) => {

@@ -3,6 +3,7 @@ import React from 'react'
 import { Alert, Message } from 'theme-ui'
 import Blockquote from '../components/Blockquote'
 import Playground from '../components/Playground'
+import code from '../components/Playground/Code'
 import { config } from '../config'
 import { A } from '../Layout/A'
 import { HeaderLink } from '../Layout/HeaderLink'
@@ -23,7 +24,13 @@ const components = Object.assign(
   {
     blockquote: Blockquote,
     pre: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-    code: Prism,
+    code: (props: any) => {
+      const { children, ...otherProps } = props
+      if (props.className.startsWith('language-')) {
+        return <Prism {...otherProps}>{children}</Prism>
+      }
+      return <code {...otherProps}>{children}</code>
+    },
     Message,
     Alert,
     Playground,
