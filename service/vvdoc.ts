@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig, mergeConfig } from 'vite'
 import { config as defaultConfig } from './config.default'
+import { propsgen } from './props'
 import { toc } from './toc'
 import { tryRequire } from './tryRequire'
 
@@ -39,7 +40,16 @@ export default function (options: { root: string }): any {
           jsxImportSource: 'theme-ui',
           jsxRuntime: 'automatic',
           providerImportSource: '@mdx-js/react',
-          remarkPlugins: [remarkGfm, toc],
+          remarkPlugins: [
+            remarkGfm,
+            toc,
+            [
+              propsgen,
+              {
+                root: resolve(root, 'playground'),
+              },
+            ],
+          ],
           rehypePlugins: [slug],
         })
         compiler.data('headingMeta', {
