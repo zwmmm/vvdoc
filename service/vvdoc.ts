@@ -16,10 +16,10 @@ export default function (options: { root: string }): any {
 
   function getConfig() {
     const module = tryRequire(configName, root)
-    return JSON.stringify({
+    return {
       ...defaultConfig,
       ...(module.config || {}),
-    })
+    }
   }
 
   let userConfig = getConfig()
@@ -28,7 +28,7 @@ export default function (options: { root: string }): any {
     name: 'vvdoc',
     load(id) {
       if (id === '/@config') {
-        return `export default ${userConfig}`
+        return `export default ${JSON.stringify(userConfig)}`
       }
     },
     async transform(src, id) {
@@ -46,7 +46,7 @@ export default function (options: { root: string }): any {
             [
               propsgen,
               {
-                root: resolve(root, 'playground'),
+                root: userConfig.propsRoot || resolve(root, 'playground'),
               },
             ],
           ],

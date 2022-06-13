@@ -11,4 +11,5 @@ export const config: Config = {
     indexName: '',
     apiKey: '',
   },
+  propsRoot: '',
 }

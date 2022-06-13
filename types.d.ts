@@ -12,6 +12,7 @@ export type Config = Partial<{
   title: string
   logo: string
   repository: string
+  propsRoot: string
   menus: {
     text: string
     active: string

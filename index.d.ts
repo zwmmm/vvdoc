@@ -12,4 +12,5 @@ declare global {
   }) => JSX.Element
   const Message: (props: any) => JSX.Element
   const Alert: (props: any) => JSX.Element
+  const Props: (props: { of: string }) => JSX.Element
 }
