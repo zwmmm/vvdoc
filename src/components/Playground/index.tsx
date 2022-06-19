@@ -72,7 +72,7 @@ const Playground: React.FC<{
     return (
       <Box sx={cardStyle}>
         <FileTabs files={files} activeIndex={activeIndex} setIndex={setIndex} />
-        <Grid gap={0} columns="50% 50%" sx={{ maxHeight: 500 }}>
+        <Grid gap={0} columns="50% 50%">
           <Code url={activeUrl} />
           <Preview url={props.main} />
         </Grid>
